@@ -15,7 +15,7 @@ module.exports = function (app) {
       },
       last: {
         type: String,
-        required: [true, 'Last NAme is required']
+        required: false
       }
     },
     email: {
@@ -29,7 +29,7 @@ module.exports = function (app) {
         validator: function (v) {
           return /^\+(?:[0-9] ?){6,14}[0-9]$/.test(v);
         },
-        message: '{value} is not a valid international phone number!'
+        message: '{VALUE} is not a valid international phone number!'
       }
     }
   }, {
