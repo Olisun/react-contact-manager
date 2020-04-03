@@ -1,55 +1,22 @@
 import React, { useContext, useEffect } from 'react';
+import axios from 'axios';
 
 import ContactList from '../components/contact-list';
 import { ContactContext } from '../context/contact-context';
 
-const data = [
-  {
-    _id: '1',
-    name: {
-      first: 'Oliver',
-      last: 'Sun',
-    },
-    phone: '415-967-8626',
-    email: 'olisun@mac.com',
-  },
-  {
-    _id: '2',
-    name: {
-      first: 'Taylor',
-      last: 'Sun',
-    },
-    phone: '415-967-8800',
-    email: 'wiggly@mac.com',
-  },
-  {
-    _id: '3',
-    name: {
-      first: 'Oliver',
-      last: 'Sun',
-    },
-    phone: '415-967-8626',
-    email: 'olisun@mac.com',
-  },
-  {
-    _id: '4',
-    name: {
-      first: 'Taylor',
-      last: 'Sun',
-    },
-    phone: '415-967-8800',
-    email: 'wiggly@mac.com',
-  },
-];
 
 export default function ContactListPage() {
   const [state, dispatch] = useContext(ContactContext);
 
   useEffect(() => {
-    dispatch({
-      type: 'FETCH_CONTACTS',
-      payload: data,
-    });
+    const fetchData = async () => {
+      const response = await axios.get('http://localhost:3030/contacts');
+      dispatch({
+        type: 'FETCH_CONTACTS',
+        payload: response.data.data || response.data, // in case pagenation is disabled
+      });
+    };
+    fetchData();
   }, [dispatch]);
 
   return (
