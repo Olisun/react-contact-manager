@@ -9,9 +9,9 @@ import { ContactContext } from '../context/contact-context';
 import { flashErrorMessage } from './flash-message';
 
 
-export default function ContactForm() {
+export default function ContactForm({ contact }) {
   const [state, dispatch] = useContext(ContactContext);
-  const { register, errors, handleSubmit } = useForm();
+  const { register, errors, handleSubmit } = useForm({ defaultValues: contact, });
   const [redirect, setRedirect] = useState(false);
 
   const createContact = async data => {
@@ -26,9 +26,25 @@ export default function ContactForm() {
       flashErrorMessage(dispatch, error)
     }
   };
+  const updateContact = async data => {
+    try {
+      const response = await axios.patch(`http://localhost:3030/contacts/${contact._id}`, data);
+      dispatch({
+        type: 'UPDATE_CONTACT',
+        payload: response.data,
+      });
+      setRedirect(true);
+    } catch (error) {
+      flashErrorMessage(dispatch, error);
+    }
+  };
 
   const onSubmit = async data => {
-    await createContact(data);
+    if (contact._id) {
+      await updateContact(data);
+    } else {
+      await createContact(data);
+    }
   };
 
   if (redirect) {
@@ -38,7 +54,9 @@ export default function ContactForm() {
   return (
     <Grid centered columns={2}>
       <Grid.Column>
-        <h1 style={{ marginTop: '1em' }}>Add New Contact</h1>
+        <h1 style={{ marginTop: '1em' }}>
+          {contact._id ? "Edit Contact" : "Add New Contact"}
+        </h1>
         <Form onSubmit={handleSubmit(onSubmit)} loading={state.loading}>
           <Form.Group widths="equal">
             <Form.Field className={classnames({ error: errors.name })}>
@@ -120,5 +138,5 @@ export default function ContactForm() {
         </Form>
       </Grid.Column>
     </Grid>
-  )
+  );
 }

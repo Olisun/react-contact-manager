@@ -34,6 +34,26 @@ function reducer(state, action) {
         },
       };
     }
+    // fetching single contact to update
+    case 'FETCH_CONTACT': {
+      return {
+        ...state,
+        contact: action.payload,
+        message: {},
+      };
+    }
+    case 'UPDATE_CONTACT': {
+      const contact = action.payload;
+      return {
+        ...state,
+        contacts: state.contacts.map(item => item._id === contact._id ? contact : item),
+        message: {
+          type: 'success',
+          title: 'Update successful',
+          content: `Contact "${contact}" has been updated!`,
+        },
+      };
+    }
     default:
       throw new Error();
   }
