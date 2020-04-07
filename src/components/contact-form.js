@@ -28,7 +28,7 @@ export default function ContactForm({ contact }) {
   };
   const updateContact = async data => {
     try {
-      const response = await axios.patch(`http://localhost:3030/contacts/${contact._id}`, data);
+      const response = await axios.put(`http://localhost:3030/contacts/${contact._id}`, data);
       dispatch({
         type: 'UPDATE_CONTACT',
         payload: response.data,

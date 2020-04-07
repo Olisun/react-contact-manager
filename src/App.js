@@ -4,6 +4,7 @@ import { Container } from 'semantic-ui-react';
 
 import ContactListPage from './pages/contact-list-page';
 import ContactFormPage from './pages/contact-form-page';
+import './App.css';
 
 const App = () => {
   return (

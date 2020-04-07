@@ -1,6 +1,10 @@
-.ui.card {
+ui.card.contact-card {
   -webkit-box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.4);
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.4);
+  color: red;
+}
+
+.description {
   color: red;
 }

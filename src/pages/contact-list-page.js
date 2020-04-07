@@ -17,6 +17,8 @@ export default function ContactListPage() {
           type: 'FETCH_CONTACTS',
           payload: response.data.data || response.data, // in case pagenation is disabled
         });
+        console.log(response);
+
       } catch (error) {
         flashErrorMessage(dispatch, error);
       }

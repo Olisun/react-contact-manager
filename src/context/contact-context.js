@@ -29,7 +29,7 @@ function reducer(state, action) {
         contacts: [...state.contacts, action.payload],
         message: {
           type: 'success',
-          title: 'Success',
+          title: 'New Contact Added',
           content: 'New Contact created'
         },
       };
@@ -50,7 +50,19 @@ function reducer(state, action) {
         message: {
           type: 'success',
           title: 'Update successful',
-          content: `Contact "${contact}" has been updated!`,
+          content: `Contact "${contact.email}" has been updated!`,
+        },
+      };
+    }
+    case 'DELETE_CONTACT': {
+      const { _id, email } = action.payload;
+      return {
+        ...state,
+        contacts: state.contacts.filter(item => item._id !== _id),
+        message: {
+          type: 'success',
+          title: 'Delete Successful',
+          content: `Contact "${email}" has been deleted!`,
         },
       };
     }
