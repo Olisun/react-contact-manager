@@ -8,7 +8,7 @@ import { Redirect } from 'react-router-dom';
 import { ContactContext } from '../context/contact-context';
 import { flashErrorMessage } from './flash-message';
 
-
+// functions for creating and updating contacts.  
 export default function ContactForm({ contact }) {
   const [state, dispatch] = useContext(ContactContext);
   const { register, errors, handleSubmit } = useForm({ defaultValues: contact, });

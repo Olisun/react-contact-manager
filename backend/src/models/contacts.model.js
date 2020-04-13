@@ -3,6 +3,7 @@
 // for more of what you can do here.
 require('mongoose-type-email');
 
+// Model for contacts in the database. 
 module.exports = function (app) {
   const modelName = 'contacts';
   const mongooseClient = app.get('mongooseClient');

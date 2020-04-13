@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Button, Icon } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 import { ContactContext } from '../context/contact-context';
@@ -9,6 +9,7 @@ import './contact-card.css';
 
 const { useContext } = React;
 
+// Function for deleting contacts. 
 export default function ContactCard({ contact }) {
   // eslint-disable-next-line no-unused-vars
   const [state, dispatch] = useContext(ContactContext);
@@ -26,7 +27,7 @@ export default function ContactCard({ contact }) {
   };
 
   return (
-    <Card className="contact-card">
+    <Card>
       <Card.Content>
         <Card.Header>
           <Icon name="user outline" /> {contact.name.first} {contact.name.last}

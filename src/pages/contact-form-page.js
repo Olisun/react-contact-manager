@@ -5,7 +5,7 @@ import ContactForm from '../components/contact-form';
 import { flashErrorMessage } from '../components/flash-message';
 import { ContactContext } from '../context/contact-context';
 
-
+// Function for determining if a contact is new or one that will be updated.  When the page loads, it checks if an _id exists in the URL. If there isn’t one, it will simply load a blank form which can be used to create a new contact. Otherwise, it will perform a fetch query and populate state.contact via the dispatch function.
 export default function ContactFormPage({ match }) {
   const [state, dispatch] = useContext(ContactContext);
   const [loading, setLoading] = useState(true);

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Message } from 'semantic-ui-react';
 
+// Error handling functions. 
 export default function FlashMessage({ message }) {
   return (
     <Message

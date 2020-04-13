@@ -8,6 +8,7 @@ const initialState = {
   message: {}, // { type: 'success|fail', title:'Info|Error' content:'lorem ipsum'}
 };
 
+// The reducer function handles all the state and state changes for the app. 
 function reducer(state, action) {
   switch (action.type) {
     case 'FETCH_CONTACTS': {
@@ -71,6 +72,7 @@ function reducer(state, action) {
   }
 }
 
+// this function will let you apply ContactContextProvider to any component you wrap in. 
 export const ContactContextProvider = props => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { children } = props;

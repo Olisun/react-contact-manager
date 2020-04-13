@@ -9,6 +9,7 @@ import './App.css';
 const App = () => {
   return (
     <Container>
+      {/* split screen ui in Semantic UI acting as separate pages. */}
       <div className="ui two item menu">
         <NavLink className="item" activeClassName="active" exact to="/">
           Contacts List

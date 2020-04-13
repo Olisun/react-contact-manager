@@ -9,7 +9,9 @@ import 'fomantic-ui-css/semantic.min.css';
 import { ContactContextProvider } from './context/contact-context';
 
 ReactDOM.render(
+  // wraopping app in ContactContextProvider to utilize code from contact-context.js. 
   <ContactContextProvider>
+    {/* wrappiung app in BrowserRouter for routing */}
     <BrowserRouter>
       <App />
     </BrowserRouter>
